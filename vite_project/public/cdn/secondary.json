@@ -1,0 +1,99 @@
+{
+  "data": {
+    "slides": [
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/banner.jpg",
+          "alt": "ReactEdge Banner Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/usp.jpg",
+          "alt": "ReactEdge USP Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/megamenu.jpg",
+          "alt": "ReactEdge Mega Menu Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/minicart.jpg",
+          "alt": "ReactEdge Minicart Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/productgallery.jpg",
+          "alt": "ReactEdge Product Gallery Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/storefinder.jpg",
+          "alt": "ReactEdge Store Finder Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/intentdiscovery.jpg",
+          "alt": "ReactEdge Intent Discovery Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/booking.jpg",
+          "alt": "ReactEdge Booking Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/contact.jpg",
+          "alt": "ReactEdge Contact Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/googlereviews.jpg",
+          "alt": "ReactEdge Google Reviews Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/azgridlisting.jpg",
+          "alt": "ReactEdge A-Z Grid Listing Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/regionmap.jpg",
+          "alt": "ReactEdge Region Map Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/deckingcalculator.jpg",
+          "alt": "ReactEdge Decking Calculator Widget"
+        }
+      },
+      {
+        "image": {
+          "src": "https://mageos-docker.magsite.co.uk/media/wysiwyg/widgets/staircasecalculator.jpg",
+          "alt": "ReactEdge Staircase Calculator Widget"
+        }
+      }
+    ],
+    "settings": {
+      "mode": {
+        "desktop": "slider",
+        "tablet": "slider",
+        "mobile": "slider"
+      },
+      "height": "300px",
+      "visibleSlides": 4
+    }
+  }
+}
