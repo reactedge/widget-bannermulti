@@ -1,0 +1,14 @@
+.re-banner-track--tiles {
+    display: flex;
+    gap: 16px;
+}
+
+.re-banner-slide {
+    flex: 1;
+}
+
+.re-banner-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
