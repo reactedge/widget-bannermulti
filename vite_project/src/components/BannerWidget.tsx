@@ -1,6 +1,8 @@
 import {useWidgetConfig} from "../hooks/useWidgetConfig.ts";
 import {BannerSlider} from "./BannerSlider.tsx";
 import {BannerStatic} from "./BannerStatic.tsx";
+import {getVisibleSlides} from "../lib/vslide.ts";
+import {activity} from "../activity";
 
 type Props = {
     host: HTMLElement
@@ -20,7 +22,13 @@ export const BannerWidget = ({host}: Props) => {
     else if (isTablet) currentMode = config.settings.mode.tablet;
 
     if (currentMode === "slider") {
-        return <BannerSlider slides={config.slides} config={config.settings} />;
+        const visibleSlides = getVisibleSlides(
+            isMobile,
+            isTablet,
+            config.settings.visibleSlides?? 1
+        )
+        activity('vibille_slides', 'Visible Slides', {isMobile, isTablet, visibleSlides});
+        return <BannerSlider slides={config.slides} config={config.settings} visibleSlides={visibleSlides} />;
     }
 
     return <BannerStatic slides={config.slides} config={config.settings} />;

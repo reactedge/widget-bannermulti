@@ -7,6 +7,7 @@ export interface NavigationProps {
 export interface BannerSliderProps {
     slides:  BannerSlide[];
     config: BannerSettingConfig;
+    visibleSlides: number
 }
 
 export interface BannerStaticProps {

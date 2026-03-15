@@ -5,14 +5,13 @@ import { NavigationArrows } from "./NavigationArrows.tsx";
 import type { BannerSliderProps } from "./Types.ts";
 import {activity} from "../activity";
 
-export const BannerSlider = ({ slides, config }: BannerSliderProps) => {
+export const BannerSlider = ({ slides, config, visibleSlides }: BannerSliderProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const ratio = config.mode.desktop || "16:7";
     const [w, h] = ratio.split(":").map(Number);
     const paddingTop = (h / w) * 100;
 
-    const visibleSlides = config.visibleSlides ?? 1;
     const totalGroups = Math.ceil(slides.length / visibleSlides);
 
     const start = currentIndex * visibleSlides;
