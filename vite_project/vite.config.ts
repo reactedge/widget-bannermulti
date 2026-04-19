@@ -10,7 +10,7 @@ export default defineConfig({
     manifestPlugin({ widgetName }),
   ],
   define: {
-    'process.env.WIDGET_NAME': JSON.stringify(widgetName)
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
   },
   build: {
     outDir: "../www",
