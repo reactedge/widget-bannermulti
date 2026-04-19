@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: reactedge
     env:
-      WIDGET_NAME: usp
+      WIDGET_NAME: bannermulti
 
     steps:
       - name: Checkout
