@@ -6,7 +6,7 @@ import sharp from 'sharp';
 const INPUT_FILE = './scripts/images.json';
 const OUTPUT_DIR = './images-webp';
 
-const MAX_WIDTH = 1200;
+const MAX_WIDTH = 400;
 const QUALITY = 80;
 
 if (!fs.existsSync(OUTPUT_DIR)) {
