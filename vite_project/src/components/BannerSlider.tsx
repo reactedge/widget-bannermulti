@@ -10,12 +10,13 @@ export const BannerSlider = ({ slides, config, visibleSlides }: BannerSliderProp
 
     const ratio = config.mode.desktop || "16:7";
     const [w, h] = ratio.split(":").map(Number);
-    const paddingTop = (h / w) * 100;
 
     const totalGroups = Math.ceil(slides.length / visibleSlides);
 
     const start = currentIndex * visibleSlides;
     const end = start + visibleSlides;
+
+    console.log({ratio, start, end , visibleSlides})
 
     const tileMode = visibleSlides > 1;
 
@@ -38,8 +39,8 @@ export const BannerSlider = ({ slides, config, visibleSlides }: BannerSliderProp
                     }`}
                     style={
                         tileMode
-                            ? { height: config.height ?? "300px" }
-                            : { paddingTop: `${paddingTop}%` }
+                            ? { height: config.height ?? "auto" }
+                            : { aspectRatio: `${w} / ${h}` }
                     }
                 >
                     {slides.slice(start, end).map((slide, i) => (
