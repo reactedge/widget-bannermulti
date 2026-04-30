@@ -10,7 +10,7 @@ export default defineConfig({
     manifestPlugin({ widgetName }),
   ],
   define: {
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+    'process.env': {}
   },
   build: {
     outDir: "../www",
@@ -18,7 +18,7 @@ export default defineConfig({
     emptyOutDir: false,
     lib: {
       entry: "src/widget.ts",
-      name: "WidgetUsp",
+      name: `ReactEdge_${widgetName}`,
       fileName: () => `widget-${widgetName}@${pkg.version}.iife.js`,
       formats: ["iife"],
     },

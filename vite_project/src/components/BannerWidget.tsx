@@ -1,15 +1,15 @@
-import {useWidgetConfig} from "../hooks/useWidgetConfig.ts";
 import {BannerSlider} from "./BannerSlider.tsx";
 import {BannerStatic} from "./BannerStatic.tsx";
 import {getVisibleSlides} from "../lib/vslide.ts";
 import {activity} from "../activity";
+import {type BannerRawWidgetConfig, readWidgetConfig} from "../BannerConfig.ts";
 
 type Props = {
-    host: HTMLElement
+    rawConfig: BannerRawWidgetConfig
 }
 
-export const BannerWidget = ({host}: Props) => {
-    const {config} = useWidgetConfig(host);
+export const BannerWidget = ({rawConfig}: Props) => {
+    const config = readWidgetConfig(rawConfig);
 
     if (!config) return null;
 

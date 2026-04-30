@@ -1,13 +1,14 @@
 import type { BannerSlideProps } from "./Types";
+import {ZoomableImage} from "./BannerSlide/ZoomableImage.tsx";
 
 export const BannerSlide = ({ slide, visibleSlides = 1, tileMode }: BannerSlideProps) => {
     const { image, title } = slide;
 
-    const focal = image?.focalPoint;
-
-    const wrapperStyle: React.CSSProperties | undefined = tileMode
+    const wrapperStyle = tileMode
         ? { flex: `0 0 calc((100% - ${(visibleSlides - 1) * 16}px) / ${visibleSlides})` }
         : undefined;
+
+    const focal = image?.focalPoint;
 
     const objectPosition = focal
         ? `${focal.x * 100}% ${focal.y * 100}%`
@@ -17,15 +18,14 @@ export const BannerSlide = ({ slide, visibleSlides = 1, tileMode }: BannerSlideP
         <div
             className={`re-banner-slide ${tileMode ? "re-banner-slide--tile" : ""}`}
             style={wrapperStyle}
-            data-banner-slide
         >
-            <img
+            <ZoomableImage
                 src={image.src}
                 srcSet={image.srcset}
                 sizes={image.sizes}
-                alt={title?.text || ""}
+                alt={title?.text}
+                objectPosition={objectPosition}
                 className="re-banner-image"
-                style={objectPosition ? { objectPosition } : undefined}
             />
         </div>
     );
