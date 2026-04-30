@@ -8,19 +8,19 @@ import {activity} from "../activity";
 export const BannerSlider = ({ slides, config, visibleSlides }: BannerSliderProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const ratio = config.mode.desktop || "16:7";
-    const [w, h] = ratio.split(":").map(Number);
+    const mode = config.mode.desktop;
+    const w = config.imageWidth * visibleSlides;
+    const h = config.imageHeight;
 
     const totalGroups = Math.ceil(slides.length / visibleSlides);
 
     const start = currentIndex * visibleSlides;
     const end = start + visibleSlides;
 
-    console.log({ratio, start, end , visibleSlides})
-
     const tileMode = visibleSlides > 1;
 
     activity('banner_slider', 'Banner Slider', {
+        mode,
         start,
         end,
         totalGroups,
@@ -37,11 +37,10 @@ export const BannerSlider = ({ slides, config, visibleSlides }: BannerSliderProp
                             ? "re-banner-track--tiles"
                             : "re-banner-track--single"
                     }`}
-                    style={
-                        tileMode
-                            ? { height: config.height ?? "auto" }
-                            : { aspectRatio: `${w} / ${h}` }
-                    }
+                    style={{
+                        width: `${w}px`,
+                        height: `${h}px`
+                    }}
                 >
                     {slides.slice(start, end).map((slide, i) => (
                         <BannerSlide

@@ -50,7 +50,8 @@ export type BannerModeValue = "static" | "slider" | "none";
 
 export interface BannerSettingConfig {
     mode: BannerMode;
-    height: string;
+    imageHeight: number;
+    imageWidth: number;
     visibleSlides?: number;
 }
 
