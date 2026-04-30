@@ -60,12 +60,3 @@ export interface BannerMode {
     tablet: BannerModeValue;
     mobile: BannerModeValue;
 }
-
-export const defaultBannerConfig: BannerSettingConfig = {
-    mode: {
-        desktop: "static",
-        tablet: "slider",
-        mobile: "slider"
-    },
-    height: "300px",
-};
