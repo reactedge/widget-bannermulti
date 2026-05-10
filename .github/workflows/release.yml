@@ -69,10 +69,6 @@ jobs:
             "$FILE" \
             "www/widget-${WIDGET_NAME}.manifest.json" \
             ${{ secrets.WIDGET_SSH_USER }}@${{ secrets.WIDGET_SSH_HOST }}:$DEST/
-          
-          rsync -avz \
-            www/cdn/ \
-            ${{ secrets.WIDGET_SSH_USER }}@${{ secrets.WIDGET_SSH_HOST }}:$DEST/cdn/
 
       - name: Publish SSR widget source
         run: |
