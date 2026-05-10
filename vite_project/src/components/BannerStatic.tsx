@@ -1,52 +1,61 @@
-// components/BannerStatic.tsx
+import React from 'react';
 import { BannerSlide } from "./BannerSlide.tsx";
-import type {BannerStaticProps} from "./Types.ts";
+import type { BannerStaticProps } from "./Types.ts";
 
 export const BannerStatic = ({ slides, config }: BannerStaticProps) => {
-    // Breakpoints
-    const isMobile = window.matchMedia("(max-width: 640px)").matches;
-    const isTablet = window.matchMedia("(min-width: 641px) and (max-width: 1024px)").matches;
+    const getRatioClass = () => {
+        if (typeof window !== "undefined") {
+            if (window.matchMedia("(max-width: 640px)").matches) {
+                return `ratio-${(config.mode.mobile || "3:4").replace(":", "-")}`;
+            }
 
-    const columns = () => {
+            if (
+                window.matchMedia("(min-width: 641px) and (max-width: 1024px)")
+                    .matches
+            ) {
+                return `ratio-${(config.mode.tablet || "4:3").replace(":", "-")}`;
+            }
+        }
+
+        return `ratio-${(config.mode.desktop || "16:7").replace(":", "-")}`;
+    };
+
+    const getColumnsClass = () => {
         const slideCount = slides.length;
-        const maxColumns = isMobile ? 1 : isTablet ? 2 : 3;
 
-        return Math.min(maxColumns, slideCount);
-    }
+        if (typeof window !== "undefined") {
+            if (window.matchMedia("(max-width: 640px)").matches) {
+                return "cols-1";
+            }
+
+            if (
+                window.matchMedia("(min-width: 641px) and (max-width: 1024px)")
+                    .matches
+            ) {
+                return slideCount >= 2 ? "cols-2" : "cols-1";
+            }
+        }
+
+        if (slideCount >= 3) return "cols-3";
+        if (slideCount === 2) return "cols-2";
+
+        return "cols-1";
+    };
 
     return (
-        <div
-            style={{
-                display: "grid",
-                gridTemplateColumns: `repeat(${columns()}, 1fr)`,
-                gap: "20px",
-                width: "100%"
-            }}
-        >
-            {slides.map((slide, index) => {
-                const ratio = isMobile
-                    ? config.mode.mobile || "3:4"
-                    : isTablet
-                        ? config.mode.tablet || "4:3"
-                        : config.mode.desktop || "16:7";
-
-                const [w, h] = ratio.split(":").map(Number);
-                const paddingTop = (h / w) * 100;
-
-                return (
-                    <div
-                        key={index}
-                        style={{
-                            position: "relative",
-                            width: "100%",
-                            height: "100%",
-                            paddingTop: paddingTop + "%"
-                        }}
-                    >
-                        <BannerSlide slide={slide} isActive={false} tileMode={true} />
-                    </div>
-                );
-            })}
+        <div className={`banner-static-grid ${getColumnsClass()}`}>
+            {slides.map((slide, index) => (
+                <div
+                    key={index}
+                    className={`banner-static-item ${getRatioClass()}`}
+                >
+                    <BannerSlide
+                        slide={slide}
+                        isActive={false}
+                        tileMode={true}
+                    />
+                </div>
+            ))}
         </div>
     );
 };

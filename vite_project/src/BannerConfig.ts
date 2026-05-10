@@ -10,6 +10,8 @@ export interface BannerWidgetConfig {
     readonly settings: BannerSettingConfig;
 }
 
+export const WIDGET_ID = 'bannermulti';
+
 export function readWidgetConfig(
     rawConfig: BannerRawWidgetConfig
 ): BannerWidgetConfig {

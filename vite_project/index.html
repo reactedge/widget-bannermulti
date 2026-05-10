@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="https://widgets-cdn.co.uk:8459/bannermultimulti/styles/banner.css">
+</head>
 <body>
 
 <h2>bannermulti x2 Test</h2>
 
 
 <script type="module">
-    const manifest = await fetch('/cdn/index.json').then(r => r.json());
-
+    import {getCdnManifest} from "./src/lib/contract-resolver.js";
     import { mount } from './src/widget.ts';
 
-    const configs = await Promise.all(
-        manifest.contracts.map(async (url) => {
-            const data = await fetch(url).then(r => r.json());
-
-            return {
-                url,
-                id: url.split('/').pop(),
-                version: data.version || 'v1',
-                data
-            };
-        })
-    );
+    const configs = await getCdnManifest();
 
     function pickRandom(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
@@ -75,11 +66,7 @@
             contractViewer.textContent = JSON.stringify({
                 width: `${width}px`,
                 id: config.id,
-                category: config.category,
-                slides: config.data.data.slides.length,
-                mode: config.data.data.settings.mode,
-                visibleSlides: config.data.data.settings.visibleSlides,
-                imageDimensions: `(${config.data.data.settings.imageWidth}px, ${config.data.data.settings.imageHeight}px)`
+                settings: config.data.settings
             }, null, 2);
 
             requestAnimationFrame(() => {

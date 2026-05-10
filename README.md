@@ -91,6 +91,15 @@ npm install
 npm run dev
 ```
 
+To run the widget in SSR mode:
+
+```bash
+cd widget-usp
+npm install
+NODE_TLS_REJECT_UNAUTHORIZED=0 npx tsx scripts/render-page.ts ../widgets-cdn/www/bannermulti/contracts/mageosuk2.json
+
+```
+
 To run the test suite:
 ```bash
 npx playwright test --config=tests/playwright.dev.config.ts
