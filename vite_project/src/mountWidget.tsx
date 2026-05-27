@@ -2,9 +2,10 @@ import { createRoot } from "react-dom/client";
 import {activity} from "./activity";
 import {BannerWidget} from "./components/BannerWidget.tsx";
 import type {BannerRawWidgetConfig} from "./BannerConfig.ts";
+import {getMountedHost} from "./lib/hostReader.ts";
 
 export function mountWidget(hostElement: HTMLElement, config: BannerRawWidgetConfig) {
-    const mountedHost = hostElement;
+    const mountedHost = getMountedHost(hostElement);
 
     activity('bootstrap', 'Widget mounted');
 
