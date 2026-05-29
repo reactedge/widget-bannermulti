@@ -1,10 +1,9 @@
-import {mountWidget} from "./mountWidget";
-import {type BannerRawWidgetConfig, WIDGET_ID} from "./BannerConfig.ts";
+import {mountWidget} from "./mountWidget.tsx";
+import "./styles/widget.css"
+import {type RawWidgetConfig, WIDGET_ID} from "./Config.ts";
 
-import "./styles/banner.css"
-
-const mount = async (el: HTMLElement, config: BannerRawWidgetConfig) => {
-     await mountWidget(el, config)
+const mount = async (el: HTMLElement, config: RawWidgetConfig) => {
+    await mountWidget(el, config)
 }
 
 const api = { mount };

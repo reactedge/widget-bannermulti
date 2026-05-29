@@ -6,7 +6,8 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 const isAnalyze = process.env.ANALYZE === 'true';
 
-const widgetName = 'bannermulti';
+const widgetName = pkg.name.replace(/^widget-/, '');
+
 export default defineConfig({
   plugins: [
     react(),

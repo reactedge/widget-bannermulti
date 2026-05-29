@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import type {BannerRawWidgetConfig} from "../BannerConfig.ts";
+import type {BannerRawWidgetConfig} from "../Config.ts";
 import {BannerWidgetView} from "../BannerWidgetView.tsx";
 
 export const renderHtml = (config: BannerRawWidgetConfig): string => {

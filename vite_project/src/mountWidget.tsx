@@ -1,14 +1,14 @@
-import { createRoot } from "react-dom/client";
+import {createRoot} from "react-dom/client";
+import type {RawWidgetConfig} from "./Config.ts";
+import React from "react";
 import {activity} from "./activity";
-import {BannerWidget} from "./components/BannerWidget.tsx";
-import type {BannerRawWidgetConfig} from "./BannerConfig.ts";
 import {getMountedHost} from "./lib/hostReader.ts";
+import {WidgetWrapper} from "./components/WidgetWrapper.tsx";
 
-export function mountWidget(hostElement: HTMLElement, config: BannerRawWidgetConfig) {
+export async function mountWidget(hostElement: HTMLElement, config: RawWidgetConfig) {
     const mountedHost = getMountedHost(hostElement);
 
-    activity('bootstrap', 'Widget mounted');
+    activity('bootstrap', 'Widget mounted', hostElement);
 
-    const root = createRoot(mountedHost);
-    root.render(<BannerWidget rawConfig={config} />);
+    createRoot(mountedHost).render(<WidgetWrapper rawConfig={config} />);
 }

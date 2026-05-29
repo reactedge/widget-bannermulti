@@ -1,5 +1,5 @@
 import React from 'react';
-import {type BannerRawWidgetConfig, readWidgetConfig} from "./BannerConfig.ts";
+import {type BannerRawWidgetConfig, readWidgetConfig} from "./Config.ts";
 import {BannerStatic} from "./components/BannerStatic.tsx";
 import {Spinner} from "./components/Spinner.tsx";
 

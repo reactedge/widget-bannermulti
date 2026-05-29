@@ -1,7 +1,7 @@
 import {activity} from "../activity";
 import {hydrateRoot} from "react-dom/client";
-import type {BannerRawWidgetConfig} from "../BannerConfig.ts";
-import {BannerWidget} from "../components/BannerWidget.tsx";
+import type {BannerRawWidgetConfig} from "../Config.ts";
+import {WidgetWrapper} from "../components/WidgetWrapper.tsx";
 
 export async function mountWidget(hostElement: HTMLElement, config: BannerRawWidgetConfig) {
     const mountedHost = hostElement;
@@ -10,6 +10,6 @@ export async function mountWidget(hostElement: HTMLElement, config: BannerRawWid
 
     hydrateRoot(
         mountedHost,
-        <BannerWidget rawConfig={config} />
+        <WidgetWrapper rawConfig={config} />
     );
 }

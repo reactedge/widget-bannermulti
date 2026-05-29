@@ -1,7 +1,7 @@
 import {type BannerSettingConfig, type BannerSlide} from "./components/Types.ts";
 import {activity} from "./activity";
 
-export interface BannerRawWidgetConfig {
+export interface RawWidgetConfig {
     data: BannerWidgetConfig
 }
 export interface BannerWidgetConfig {
@@ -13,7 +13,7 @@ export interface BannerWidgetConfig {
 export const WIDGET_ID = 'bannermulti';
 
 export function readWidgetConfig(
-    rawConfig: BannerRawWidgetConfig
+    rawConfig: RawWidgetConfig
 ): BannerWidgetConfig {
     const contract = rawConfig.data
 
