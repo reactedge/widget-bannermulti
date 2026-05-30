@@ -1,10 +1,11 @@
 import {type BannerSettingConfig, type BannerSlide} from "./components/Types.ts";
 import type {WidgetActivity} from "./activity";
+import {parseConfig} from "./ConfigSchema.ts";
 
 export interface RawWidgetConfig {
-    data: BannerWidgetConfig
+    data: WidgetConfig
 }
-export interface BannerWidgetConfig {
+export interface WidgetConfig {
     readonly slides: BannerSlide[]
 
     readonly settings: BannerSettingConfig;
@@ -13,12 +14,28 @@ export interface BannerWidgetConfig {
 export const WIDGET_ID = 'bannermulti';
 
 export function readWidgetConfig(
-    rawConfig: RawWidgetConfig,
+    rawConfig: unknown,
     activity?: WidgetActivity
-): BannerWidgetConfig {
-    const contract = rawConfig.data
+): WidgetConfig {
+    try {
+        const contract = parseConfig(rawConfig);
 
-    activity?.log('bootstrap', 'Config resolved', contract);
+        activity?.log(
+            'bootstrap',
+            'Config resolved',
+            contract
+        );
 
-    return Object.freeze(contract);
+        return Object.freeze(contract);
+
+    } catch (e) {
+        activity?.log(
+            'bootstrap',
+            'Invalid widget contract',
+            e instanceof Error? e.message: e,
+            'error'
+        );
+
+        throw e;
+    }
 }
