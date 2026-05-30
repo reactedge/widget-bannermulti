@@ -1,10 +1,10 @@
 import React from 'react';
-import {type BannerRawWidgetConfig, readWidgetConfig} from "./Config.ts";
+import {type RawWidgetConfig, readWidgetConfig} from "./Config.ts";
 import {BannerStatic} from "./components/BannerStatic.tsx";
 import {Spinner} from "./components/Spinner.tsx";
 
 type Props = {
-    rawConfig: BannerRawWidgetConfig;
+    rawConfig: RawWidgetConfig;
 };
 
 export const BannerWidgetView = ({ rawConfig }: Props) => {

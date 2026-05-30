@@ -3,10 +3,11 @@ import { BannerSlide } from "./BannerSlide.tsx";
 import { NavigationDots } from "./NavigationDots.tsx";
 import { NavigationArrows } from "./NavigationArrows.tsx";
 import type { BannerSliderProps } from "./Types.ts";
-import {activity} from "../activity";
+import {useActivityContext} from "../activity/Context/useActivityContext.ts";
 
 export const BannerSlider = ({ slides, config, visibleSlides }: BannerSliderProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const activity = useActivityContext()
 
     const mode = config.mode.desktop;
     const w = config.imageWidth * visibleSlides;
@@ -19,7 +20,7 @@ export const BannerSlider = ({ slides, config, visibleSlides }: BannerSliderProp
 
     const tileMode = visibleSlides > 1;
 
-    activity('banner_slider', 'Banner Slider', {
+    activity.log('banner_slider', 'Banner Slider', {
         mode,
         start,
         end,

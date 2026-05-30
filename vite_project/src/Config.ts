@@ -1,5 +1,5 @@
 import {type BannerSettingConfig, type BannerSlide} from "./components/Types.ts";
-import {activity} from "./activity";
+import type {WidgetActivity} from "./activity";
 
 export interface RawWidgetConfig {
     data: BannerWidgetConfig
@@ -13,11 +13,12 @@ export interface BannerWidgetConfig {
 export const WIDGET_ID = 'bannermulti';
 
 export function readWidgetConfig(
-    rawConfig: RawWidgetConfig
+    rawConfig: RawWidgetConfig,
+    activity?: WidgetActivity
 ): BannerWidgetConfig {
     const contract = rawConfig.data
 
-    activity('bootstrap', 'Config resolved', contract);
+    activity?.log('bootstrap', 'Config resolved', contract);
 
     return Object.freeze(contract);
 }

@@ -1,11 +1,12 @@
 import type {NavigationProps} from "./Types.ts";
-import {activity} from "../activity";
 import {handleArrowButtonKeyDown} from "../lib/keyboard.ts";
+import {useActivityContext} from "../activity/Context/useActivityContext.ts";
 
 export const NavigationArrows = ({ current, total, onChange }: NavigationProps) => {
+    const activity = useActivityContext()
 
     const prev = () => {
-        activity('navigation', 'Slide navigation', {
+        activity.log('navigation', 'Slide navigation', {
             "direction": "left"
         });
         const newIndex = current === 0 ? total - 1 : current - 1;
@@ -13,7 +14,7 @@ export const NavigationArrows = ({ current, total, onChange }: NavigationProps) 
     };
 
     const next = () => {
-        activity('navigation', 'Slide navigation', {
+        activity.log('navigation', 'Slide navigation', {
             "direction": "right"
         });
         const newIndex = current === total - 1 ? 0 : current + 1;

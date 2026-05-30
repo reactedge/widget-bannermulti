@@ -1,15 +1,16 @@
-import {BannerSlider} from "./BannerSlider.tsx";
-import {BannerStatic} from "./BannerStatic.tsx";
-import {getVisibleSlides} from "../lib/vslide.ts";
-import {activity} from "../activity";
-import {type BannerRawWidgetConfig, readWidgetConfig} from "../Config.ts";
+import {BannerSlider} from "./components/BannerSlider.tsx";
+import {BannerStatic} from "./components/BannerStatic.tsx";
+import {getVisibleSlides} from "./lib/vslide.ts";
+import {type RawWidgetConfig, readWidgetConfig} from "./Config.ts";
+import {useActivityContext} from "./activity/Context/useActivityContext.ts";
 
 type Props = {
-    rawConfig: BannerRawWidgetConfig
+    rawConfig: RawWidgetConfig
 }
 
 export const WidgetWrapper = ({rawConfig}: Props) => {
-    const config = readWidgetConfig(rawConfig);
+    const activity = useActivityContext()
+    const config = readWidgetConfig(rawConfig, activity);
 
     if (!config) return null;
 
@@ -27,7 +28,7 @@ export const WidgetWrapper = ({rawConfig}: Props) => {
             isTablet,
             config.settings.visibleSlides?? 1
         )
-        activity('vibille_slides', 'Visible Slides', {isMobile, isTablet, visibleSlides});
+        activity.log('vibille_slides', 'Visible Slides', {isMobile, isTablet, visibleSlides});
         return <BannerSlider slides={config.slides} config={config.settings} visibleSlides={visibleSlides} />;
     }
 
